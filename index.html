@@ -20,8 +20,13 @@
       align-items: center;
     }
     .calBody {
-      width: 400px;
+      width: auto;
       border: 1px solid red;
+     
+      border-radius: 10px;
+      display: grid;
+      align-items: center;
+
     }
     .inputContainer {
        
@@ -29,21 +34,48 @@
       height: 40px;
       margin: 10px;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(163, 12, 12, 0.06) 0px 0px 0px 1px;
+      border-radius: 10px;
     }
     .inputContainer input{
-        width: 100%;
+        width: 99%;
         height: 100%;
         text-align: right;
         padding-right: 5px;
         font-size: 25px;
         background: transparent;
         outline: none;
+          border-radius: 10px;
     }
     .btnBox{
-        width: 100%;
+        width: 96%;
+       
         border: 1px solid blue;
-        height: 45px;
+        height: 50px;
         margin: 5px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+       
+    }
+    .btnBox button{
+      
+      height: 95%;
+      border-radius: 50%;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+      width: 20%;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 20px;
+      text-align: center;
+       
+    }
+    .operator {
+      color: rgb(210, 17, 30);
+    }
+    #equal{
+      background: rgb(89, 209, 131);
+      color: black;
     }
   </style>
   <body>
@@ -55,28 +87,34 @@
         
 
         <div class="btnBox">
-          <button>AC</button>
+          <button>AC</button>    
           <button>DEL</button>
-          <button>%</button>
-          <button>*</button>
+          <button >%</button>
+          <button class = "operator">*</button>
         </div>
         <div class="btnBox">
           <button>7</button>
           <button>8</button>
           <button>9</button>
-          <button>/</button>
+          <button class = "operator">/</button>
         </div>
         <div class="btnBox">
           <button>4</button>
           <button>5</button>
           <button>6</button>
-          <button>+</button>
+          <button class = "operator">+</button>
         </div>
         <div class="btnBox">
           <button>1</button>
           <button>2</button>
           <button>3</button>
-          <button>-</button>
+          <button class = "operator">-</button>
+        </div>
+        <div class="btnBox">
+          <button>00</button>
+          <button>0</button>
+          <button>.</button>
+          <button id = "equal">=</button>
         </div>
       </div>
     </div>
