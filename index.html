@@ -44,6 +44,9 @@
       background: transparent;
       outline: none;
       border-radius: 10px;
+      font-size: 20px; /* Adjust text size */
+      overflow: hidden; /* Hide overflowing text */
+      text-overflow: ellipsis; /* Show '...' if the text overflows */
     }
     .btnBox {
       width: 96%;
@@ -83,55 +86,77 @@
         </div>
 
         <div class="btnBox">
-          <button>AC</button>
-          <button>DEL</button>
-          <button>%</button>
-          <button class="operator">*</button>
+          <button value="AC">AC</button>
+          <button value="DEL">DEL</button>
+          <button value="%">%</button>
+          <button value="*" class="operator">*</button>
         </div>
         <div class="btnBox">
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
-          <button class="operator">/</button>
+          <button value="7">7</button>
+          <button value="8">8</button>
+          <button value="9">9</button>
+          <button value="/" class="operator">/</button>
         </div>
         <div class="btnBox">
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
-          <button class="operator">+</button>
+          <button value="4">4</button>
+          <button value="5">5</button>
+          <button value="6">6</button>
+          <button value="+" class="operator">+</button>
         </div>
         <div class="btnBox">
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button class="operator">-</button>
+          <button value="1">1</button>
+          <button value="2">2</button>
+          <button value="3">3</button>
+          <button value="-" class="operator">-</button>
         </div>
         <div class="btnBox">
-          <button>00</button>
-          <button>0</button>
+          <button value="00">00</button>
+          <button value="0">0</button>
           <button>.</button>
-          <button id="equal">=</button>
+          <button value="=" id="equal">=</button>
         </div>
       </div>
     </div>
     <script>
-      let inputValue = document.getElementById("inputVal");
+      let display = document.getElementById("inputVal");
+      currentValue = "";
       let buttonGroup = document.querySelectorAll("button");
       console.log(buttonGroup);
       buttonGroup.forEach((btn) =>
         btn.addEventListener("click", (e) => {
           let btnText = btn.value;
-          inputValue.value += btnText;
-          console.log();
+          console.log(btnText)
           if (btnText == "AC") {
-          }
-          if (btnText == "DEL") {
-            inputValue = document.getElementById("inputVal");
-            newText = inputValue.value.slice(0, -1);
-            inputValue.value = newText;
+            currentValue = "";
+            display.value = currentValue;
+          } else if (btnText == "DEL") {
+            currentValue.slice(0, -1);
+            display.value = currentValue;
+          } else if (btnText == "=") {
+            console.log("press equal")
+            if (isOperator(currentValue.slice(-1)) && isOperator(btnText)) {
+        // If the last character is already an operator, don't allow another operator
+        return;
+    }
+            currentValue = currentValue == "" ? display.value= "Enter a number" : eval(currentValue);
+            
+            console.log(currentValue, "inside the equal")
+            display.value = currentValue;
+          } else {
+            if (currentValue === "Enter a number"){
+              currentValue = ""
+            }
+            currentValue += btnText
+            console.log(currentValue)
+            display = currentValue
           }
         })
       );
+
+      function isOperator(character) {
+    // Check if the character is one of the operators
+    return ['+', '-', '*', '/'].includes(character);
+}
     </script>
   </body>
 </html>
